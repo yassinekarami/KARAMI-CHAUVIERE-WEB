@@ -1,0 +1,24 @@
+evenement_homepage:
+    path:     /
+    defaults: { _controller: "EvenementBundle:evenement:index" }
+    methods:  GET
+
+evenement_show:
+    path:     /{idEvenement}/show
+    defaults: { _controller: "EvenementBundle:evenement:show" }
+    methods:  GET
+
+evenement_new:
+    path:     /new
+    defaults: { _controller: "EvenementBundle:evenement:new" }
+    methods:  [GET, POST]
+
+evenement_edit:
+    path:     /{idEvenement}/edit
+    defaults: { _controller: "EvenementBundle:evenement:edit" }
+    methods:  [GET, POST]
+
+evenement_delete:
+    path:     /{idEvenement}/delete
+    defaults: { _controller: "EvenementBundle:evenement:delete" }
+    methods:  DELETE

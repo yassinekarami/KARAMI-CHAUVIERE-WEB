@@ -1,0 +1,29 @@
+
+
+
+
+HOME_trad: HOME
+HELLO_trad: HELLO
+Event_trad: Event
+Community_trad: Community
+Login_trad: Login
+Register_trad: Register
+Profile_trad: Profile
+Change_Password_trad: Change password
+Logout_trad: Logout
+erreur: Error
+
+
+
+
+arianne:
+    home: HOME
+    evenement: EVENT
+    evenement_new: NEW
+    evenement_edit: EDIT
+    profile: PROFILE
+    login: CONNEXION
+    register: REGISTER
+    pwd: CHANGER MOT DE PASSE
+    details: DETAILS
+    edit: EDITER

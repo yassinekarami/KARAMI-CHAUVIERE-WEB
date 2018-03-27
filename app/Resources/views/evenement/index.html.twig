@@ -1,0 +1,110 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}<h2>{{ 'index.event' | trans }}</h2>{% endblock title %}
+
+
+{% block traduction %}
+    {% if app.request.locale == "en" %}
+        <li><a href="{{ path('evenement_homepage' , {'_locale' : 'fr'}) }}">FR</a></li>
+    {% else %}
+        <li><a href="{{ path('evenement_homepage' , {'_locale' : 'en'}) }}">EN</a></li>
+    {% endif %}
+{% endblock %}
+ {% block topButton %}
+
+
+
+     {% block recherche %}
+
+         <link rel="stylesheet" href="{{ asset('css/form/text.css') }}">
+         <form method="POST" action = {{ path('evenement_homepage') }} >
+
+             {{ form(formRecherche) }}
+
+         </form>
+
+     {% endblock recherche %}
+
+
+
+ {% endblock topButton %}
+
+{% block body %}
+
+
+    <table>
+        <thead>
+            <tr>
+               {#<th>Id evenement</th>#}
+                <th>{{ 'index.name_trad' | trans }}</th>
+                <th>
+                    {{ 'index.date_begin_trad' | trans }}
+                </th>
+
+             {#   <th>{{ 'index.date_end_trad' | trans }}</th>#}
+                <th>{{ 'index.lieu_trad' | trans }}</th>
+                <th>
+                    {{ 'index.max_nbr_trad' | trans }}
+                </th>
+                <th>{{ 'index.communaute_type' | trans }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+
+            <tr>
+                {#  <td><a href="{{ path('evenement_show', { 'id': evenement.id }) }}">{{ evenement.id }}</a></td>#}
+                <td>{{ evenement.nomEvenement }}</td>
+                <td>{% if evenement.dateDebut %}{{ evenement.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ evenement.lieu }}</td>
+                <td>{{ evenement.nombreMax }}</td>
+                <td>{{ evenement.communaute }}</td>
+                <td>
+                    <ul>
+                        {#
+                        <li>
+                            <a href="{{ path('evenement_show', { 'id': evenement.id }) }}">{{ 'index.show' | trans }}</a>
+                        </li>
+                        #}
+
+
+                        {% if  is_granted('ROLE_USER') %}
+                            {% if evenement.nombreMax > 0 %}
+                             <li>
+                                  <a class="btn" href="{{ path('reservation_new' , {'id': evenement.id }) }}">{{ 'index.reserver' | trans }}</a>
+                             </li>
+                            {% endif %}
+                        {% endif %}
+                        {% if  is_granted('ROLE_SUPER_ADMIN') %}
+                            <li>
+                                <a class="btn" href="{{ path('evenement_delete', { 'id': evenement.id }) }}">{{ 'index.delete' | trans}}</a>
+                            </li>
+                            <li>
+                                <a class="btn" href="{{ path('evenement_edit', {'_locale' : 'fr', 'id': evenement.id }) }}">{{ 'index.edit' | trans }}</a>
+                            </li>
+
+
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+{% block bottomButton %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <ul class="actions">
+            <li><a href="{{ path('evenement_new') }}" class="button special big">{{ 'index.add_event_trad' | trans }}</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}
+{% block rss %}
+
+{% endblock %}

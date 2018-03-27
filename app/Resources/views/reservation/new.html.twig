@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block traduction %}
+    {% if app.request.locale == "en" %}
+     {# <li><a href="{{ path('reservation_new' , {'_locale' : 'fr' , 'id ')}) }}">FR</a></li>#}
+    {% else %}
+        {#<li><a href="{{ path('reservation_new' , {'_locale' : 'en' }) }}">EN</a></li>#}
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+    <h1>Reservation creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reservation_homepage') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block rss %}
+
+{% endblock %}

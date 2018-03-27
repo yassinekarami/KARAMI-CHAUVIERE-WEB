@@ -1,0 +1,14 @@
+<head>
+    <title>flux rss</title>
+</head>
+{% for e in evenements %}
+
+    <item>
+        <title>{{ e.nomEvenement }}</title>
+        <communaute>{{ e.communaute}}</communaute>
+        <lieu>{{ e.lieu }} </lieu>
+        <nombrePlace>{{ e.nombreMax }}</nombrePlace>
+        <dateDebut>{% if e.dateDebut %}{{ e.dateDebut|date('Y-m-d') }}{% endif %}</dateDebut>
+   </item>
+
+{% endfor %}

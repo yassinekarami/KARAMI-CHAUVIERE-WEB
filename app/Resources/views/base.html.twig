@@ -1,0 +1,96 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+{% block head %}
+<head>
+    <title>Spatial by TEMPLATED</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ asset('css/base/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bouton/css.css') }}">
+
+
+</head>
+
+{% endblock head %}
+
+<body class="landing">
+
+<!-- Header -->
+
+<header id="header" class="alt">
+    {% include 'arianne.html.twig' %}
+    {% if app.user %}
+        {# <h1>{{ 'HELLO_trad' | trans}} {{ app.user }}</h1>#}
+    {% endif %}
+    <nav id="nav">
+        <ul>
+            <li><a href="{{ path('evenement_homepage') }}">{{ 'Event_trad' | trans }}</a></li>
+            {% if app.user %}
+                {#<li><a href="{{ path('fos_user_profile_show') }}">{{ 'Profile_trad' | trans }}</a></li>#}
+                <li><a href="{{ path('reservation_homepage') }}">{{ 'Profile_trad' | trans }}</a></li>
+                <li><a href="{{ path('fos_user_change_password') }}">{{ 'Change_Password_trad' | trans }}</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'Logout_trad' | trans }}</a></li>
+            {% else %}
+                <li><a href="{{ path('fos_user_security_login') }}">{{ 'Login_trad' | trans }}</a></li>
+                <li><a href="{{ path('fos_user_registration_register') }}">{{ 'Register_trad' | trans }}</a></li>
+            {% endif %}
+
+            {% block traduction %}
+                {% if app.request.locale == "en" %}
+                    <li><a href="{{ path('homepage' , {'_locale' : 'fr'}) }}">FR</a></li>
+                {% else %}
+                    <li><a href="{{ path('homepage' , {'_locale' : 'en'}) }}">EN</a></li>
+                {% endif %}
+            {% endblock %}
+
+        </ul>
+    </nav>
+</header>
+
+
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+<!-- Banner -->
+<section id="banner">
+    {% block title %}<h2>{{ 'HOME_trad' | trans }}</h2>{% endblock title %}
+
+    {% block recherche %}{% endblock recherche %}
+
+    {% block topButton %}
+
+    {% endblock topButton %}
+</section>
+
+{% block body%}
+
+{% endblock body %}
+
+
+<footer id="footer">
+    {% block bottomButton %}
+
+    {% endblock %}
+    {% block rss %}
+    <div class="container">
+        <ul class="icons">
+            <a href="{{ 'rss' }}"><img src="{{ asset('css/rss.jpg') }}"></a>
+        </ul>
+    </div>
+    {% endblock %}
+</footer>
+
+
+
+<!-- Scripts -->
+
+<script src="{{ asset('css/base/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('css/base/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('css/base/assets/js/util.js') }}"></script>
+<script src="{{ asset('css/base/assets/js/main.js') }}"></script>
+
+</body>
+
+</html>

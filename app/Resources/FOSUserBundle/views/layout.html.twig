@@ -1,0 +1,57 @@
+
+{% include 'arianne.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{{ asset('css/base/assets/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/form/css.css') }}">
+
+
+    </head>
+
+    <header id="header" class="alt">
+        {% if app.user %}
+            <h1>Bonjour {{ app.user }}</h1>
+        {% endif %}
+        <nav id="nav">
+            <ul>
+                <li><a href="{{ path('evenement_homepage') }}">Evenement</a></li>
+
+                {% if app.user %}
+                    <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                    <li><a href="{{ path('fos_user_change_password') }}">Change Password</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+               {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+            {% endif %}
+        </div>
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>

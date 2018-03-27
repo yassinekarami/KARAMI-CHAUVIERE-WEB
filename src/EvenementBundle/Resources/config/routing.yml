@@ -1,0 +1,39 @@
+evenement_homepage:
+    path:     /
+    defaults: { _controller: EvenementBundle:evenement:index }
+    methods: [GET,POST]
+
+evenement_new:
+    path: /new/
+    defaults: {_controller: EvenementBundle:evenement:new }
+    methods: [GET,POST]
+
+evenement_show:
+    path: /show/{id}
+    defaults: {_controller: EvenementBundle:evenement:show }
+    requirements :
+        id : \d+
+    methods: GET
+
+evenement_edit:
+    path: /edit/{id}
+    defaults: {_controller: EvenementBundle:evenement:edit }
+    requirements:
+        id : \d+
+    methods: [GET,POST]
+
+evenement_delete:
+    path: /delete/{id}
+    defaults: {_controller: EvenementBundle:evenement:delete }
+    requirements:
+        id : \d+
+    methods: [GET,POST]
+
+
+
+evenement_recherche:
+    path: /recherche
+    defaults: {_controller: EvenementBundle:evenement:recherche}
+
+
+

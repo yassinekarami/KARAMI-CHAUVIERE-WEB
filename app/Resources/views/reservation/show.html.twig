@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block traduction %}
+    {% if app.request.locale == "en" %}
+        <li><a href="{{ path('reservation_show' , {'_locale' : 'fr' , 'id': reservation.id }) }}">FR</a></li>
+    {% else %}
+        <li><a href="{{ path('reservation_show' , {'_locale' : 'en' , 'id': reservation.id }) }}">EN</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block title %}<h2>{{ 'index.reservation' | trans }}</h2>{% endblock title %}
+
+{% block body %}
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom evenement</th>
+                <td>{{ reservation.evenement }}</td>
+            </tr>
+            <tr>
+                <th>Nombreplace</th>
+                <td>{{ reservation.nombrePlace }}</td>
+            </tr>
+            <tr>
+                <th>Communaute</th>
+                <td>{{ reservation.evenement.communaute }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="btn" href="{{ path('reservation_homepage') }}">Back to the list</a>
+            <a class ="btn" href="{{ path('reservation_delete' , {'id':reservation.id}) }}">delete</a>
+            <a class ="btn" href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
+        </li>
+        {#
+         <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        #}
+
+    </ul>
+{% endblock %}
+
+{% block rss %}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+
+#evenement_evenement:
+ #   resource: "@EvenementBundle/Controller/evenementController.php"
+  #  type:     annotation
+
+
+
+reservation:
+    resource: "@ReservationBundle/Resources/config/routing.yml"
+    prefix:   /reservation/{_locale}
+    requirements:
+        _locale: fr|en
+
+
+
+evenement:
+    resource: "@EvenementBundle/Resources/config/routing.yml"
+    prefix:   /evenement/{_locale}
+    requirements:
+        _locale: fr|en
+
+
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+app:
+    resource: '@AppBundle/Ressouces/config/routing.yml'
+    prefix: /
+
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

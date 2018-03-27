@@ -1,0 +1,5 @@
+
+ADMIN (USER)  = personne qui gere une communauté et qui peut ajouter et supprimé des evenements concernant ca communauté
+
+
+SUPER ADMIN = gérant du site qui peut supprimé toute les communauté et tout les évenements

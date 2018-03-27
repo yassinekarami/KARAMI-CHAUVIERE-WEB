@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block traduction %}
+    {% if app.request.locale == "en" %}
+        <li><a href="{{ path('reservation_homepage' , {'_locale' : 'fr' }) }}">FR</a></li>
+    {% else %}
+        <li><a href="{{ path('reservation_homepage' , {'_locale' : 'en'  }) }}">EN</a></li>
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}<h2>{{ 'Profile' }}</h2>{% endblock title %}
+
+{% block body %}
+
+    <h1>Liste evenement Cree</h1>
+    <table>
+        <thead>
+        <tr>
+            {#<th>Id evenement</th>#}
+            <th>{{ 'index.name_trad' | trans }}</th>
+            <th>{{ 'index.date_begin_trad' | trans }}</th>
+            {#   <th>{{ 'index.date_end_trad' | trans }}</th>#}
+            <th>{{ 'index.lieu_trad' | trans }}</th>
+            <th>{{ 'index.max_nbr_trad' | trans }}</th>
+            <th>{{ 'index.communaute_type' | trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+
+            <tr>
+                {#  <td><a href="{{ path('evenement_show', { 'id': evenement.id }) }}">{{ evenement.id }}</a></td>#}
+                <td>{{ evenement.nomEvenement }}</td>
+                <td>{% if evenement.dateDebut %}{{ evenement.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                {#<td>{% if evenement.dateFin %}{{ evenement.dateFin|date('Y-m-d') }}{% endif %}</td>#}
+                <td>{{ evenement.lieu }}</td>
+                <td>{{ evenement.nombreMax }}</td>
+                <td>{{ evenement.communaute }}</td>
+                <td>
+                    {#
+                     <ul>
+                        <li>
+                            <a class="btn" href="{{ path('evenement_delete', { 'id': evenement.id }) }}">{{ 'index.delete' | trans}}</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="{{ path('evenement_edit', {'_locale' : 'fr', 'id': evenement.id }) }}">{{ 'index.edit' | trans }}</a>
+                        </li>
+                    </ul>
+                    #}
+                    <ul>
+                        <li>
+                            <a class="btn" href="{{ path('evenement_show', { 'id': evenement.id }) }}">{{ 'index.show' | trans}}</a>
+                        </li>
+                    </ul>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h1>Liste reservation</h1>
+    <table>
+        <thead>
+            <tr>
+                {# <th>Id</th>#}
+                <th>Nom evenement</th>
+                <th>Nombre place</th>
+                <th>Communaute</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                {# <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>#}
+                <td>{{ reservation.evenement }}</td>
+                <td>{{ reservation.NombrePlace }}</td>
+                <td>{{ reservation.evenement.communaute }}</td>
+                <td>
+                    <ul>
+
+                        <li>
+                            <a class ="btn" href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
+                        </li>
+
+                        {#
+                         <li>
+                            <a class ="btn" href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a class ="btn" href="{{ path('reservation_delete' , {'id':reservation.id}) }}">delete</a>
+                        </li>
+                        #}
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#
+    <ul>
+        <li>
+            <a href="{{ path('reservation_new') }}">Create a new reservation</a>
+        </li>
+    </ul>
+    #}
+{% endblock %}
+
+
+{% block rss %}
+
+{% endblock %}

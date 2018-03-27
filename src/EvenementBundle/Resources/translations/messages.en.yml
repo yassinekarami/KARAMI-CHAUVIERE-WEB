@@ -1,0 +1,26 @@
+
+# francais
+
+index:
+    add_event_trad: ADD EVENT
+    name_trad: Event name
+    date_begin_trad: Start date
+    date_end_trad: End date
+    Community_trad: Community
+    lieu_trad: Place
+    max_nbr_trad: Max participant
+    show: Details
+    reserver: Book
+    Delete: Delete
+    event_edit: Event edit
+    event: Event
+    communaute_type: Community Type
+
+label:
+    nomEvenement: Event name
+    dateDebut: Start date
+    dateFin: End date
+    lieu: Place
+    nombreMax: Max participant
+    communaute: Community
+    User: User

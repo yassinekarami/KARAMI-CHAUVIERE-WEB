@@ -1,0 +1,68 @@
+{% if app.request.get('_route') == "homepage" %}
+    <h1><a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}</a></h1>
+
+{% elseif app.request.get('_route') == "evenement_homepage"  %}
+
+     <h1><a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}</a> >
+         <a href="{{ path('evenement_homepage') }}">{{ 'arianne.evenement' | trans }}</a></h1>
+
+
+{% elseif app.request.get('_route') == "evenement_new" %}
+
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}}</a> >
+        <a href="{{ path('evenement_homepage') }}">{{ 'arianne.evenement' | trans }}</a> >
+        <a href="{{ path('evenement_new') }}">{{ "arianne.evenement_new" | trans }}</a>
+    </h1>
+
+
+{% elseif app.request.get('_route') == "evenement_edit" %}
+
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}</a> >
+        <a href="{{ path('evenement_homepage') }}">{{ 'arianne.evenement' | trans }}</a> >
+        <a href="{{ path('evenement_edit', {'_locale' : 'fr', 'id': evenement.id }) }}">{{ 'arianne.evenement_edit' | trans }}</a>
+    </h1>
+
+{% elseif app.request.get('_route') == "reservation_homepage" %}
+
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}</a> >
+        <a href="{{ path('evenement_homepage') }}">{{ 'arianne.profile' | trans }}</a>
+    </h1>
+
+{% elseif app.request.get('_route') == "reservation_show" %}
+
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}</a> >
+        <a href="{{ path('reservation_homepage') }}">{{ 'arianne.profile' | trans }}</a> >
+        <a href="{{ path('reservation_show', {'_locale' : 'fr', 'id': reservation.id }) }}">{{ 'arianne.details' | trans }}</a>
+    </h1>
+
+{% elseif app.request.get('_route') == "reservation_edit" %}
+
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }}</a> >
+        <a href="{{ path('reservation_homepage') }}">{{ "Profile" }}</a> >
+        <a href="{{ path('reservation_show', {'_locale' : 'fr', 'id': reservation.id }) }}">{{ 'arianne.details' | trans }}</a> >
+        <a href="{{ path('reservation_edit', {'_locale' : 'fr', 'id': reservation.id }) }}">{{ 'arianne.edit' | trans }}</a>
+    </h1>
+
+{% elseif app.request.get('_route') == "fos_user_security_login" %}
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }} </a> >
+        <a href="{{ path('fos_user_security_login') }}">{{ 'arianne.login' | trans }}</a>
+    </h1>
+
+{% elseif app.request.get('_route') == "fos_user_registration_register" %}
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }} </a> >
+        <a href="{{ path('fos_user_registration_register') }}">{{ 'arianne.register' | trans }}</a>
+    </h1>
+
+{% elseif app.request.get('_route') == "fos_user_change_password" %}
+    <h1>
+        <a href="{{ path('homepage') }}">{{ 'arianne.home' | trans }} </a> >
+        <a href="{{ path('fos_user_change_password') }}">{{ 'arianne.pwd' | trans }}</a>
+    </h1>
+{% endif %}

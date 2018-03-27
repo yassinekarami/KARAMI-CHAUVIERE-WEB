@@ -1,0 +1,10 @@
+index:
+    reservation: Reservation
+    delete: Delete
+    edit: Edit
+
+
+label:
+    nomCommunaute: Community name
+    description: Description
+    typeCommunaute: Community Type
